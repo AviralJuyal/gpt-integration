@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+  <title>India's Bitcoin Man</title>
+  <meta content="" name="description" />
+
+  <meta content="" name="keywords" />
+
+  <!-- Favicons -->
+  <link href="assets/img/indiaBitcoinMan.jpeg" rel="icon">
+<!--  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet"
+  />
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+  <link
+    href="assets/vendor/bootstrap/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+    rel="stylesheet"
+  />
+  <link
+    href="assets/vendor/glightbox/css/glightbox.min.css"
+    rel="stylesheet"
+  />
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet" />
+</head>
+<style>
+    body .messages-content .message.typing span, body .messages-content .message.typing::after, body .chat {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  body .action-box::after, body .chat-title::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  
+  @keyframes ball {
+    0% {
+      margin-top: 0;
+    }
+    20% {
+      margin-top: 3px;
+    }
+    80% {
+      margin-top: -5px;
+    }
+  }
+  @keyframes pop {
+    0% {
+      transform: scale(0.6);
+    }
+    30% {
+      transform: scale(1.1);
+    }
+    60% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  .mCSB_container {
+    margin: 0 !important;
+  }
+  
+  .mCSB_scrollTools {
+    margin-right: -3px;
+  }
+  
+  * {
+    outline: none;
+  }
+  
+  body, html {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  html {
+    background: #bdc3c7;
+    background: -webkit-linear-gradient(to right bottom, #bdc3c7, #2c3e50);
+    background: linear-gradient(to right bottom, #bdc3c7, #2c3e50);
+  }
+  
+  body {
+    font-family: "Microsoft JhengHei", Arial, sans-serif;
+    background: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+    letter-spacing: 1px;
+  }
+  body .chat {
+    width: 300px;
+    height: 80vh;
+    max-height: 500px;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+  }
+  body .chat-title {
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 50px;
+  }
+  body .chat-title h2 {
+    margin: 10px 0;
+    padding: 0;
+    color: #f0f0f0;
+    font-weight: normal;
+    font-size: 16px;
+    display: inline-block;
+    line-height: 30px;
+  }
+  body .chat-title .avatar {
+    float: left;
+    margin: 10px;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+  }
+  body .chat-title .avatar img {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+  }
+  body .messages {
+    width: 100%;
+    height: calc(100% - 90px);
+  }
+  body .messages-content {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+  body .messages-content .message {
+    max-width: calc(100% - 76px);
+    padding: 8px;
+    margin: 8px 0 8px 12px;
+    border-radius: 5px;
+    background-color: rgba(170, 187, 204, 0.1);
+    color: #e3e3e3;
+    float: left;
+    font-size: 13px;
+    position: relative;
+    word-break: break-all;
+    clear: both;
+    animation: pop 0.3s forwards;
+  }
+  body .messages-content .message .timestamp {
+    position: absolute;
+    right: -40px;
+    bottom: 0;
+    font-size: 12px;
+    color: #bababa;
+  }
+  body .messages-content .message.personal {
+    float: right;
+    margin: 8px 12px 8px 0;
+  }
+  body .messages-content .message.personal .timestamp {
+    right: auto;
+    left: -40px;
+  }
+  body .messages-content .message.typing {
+    width: 30px;
+    height: 16px;
+  }
+  body .messages-content .message.typing::after {
+    content: "";
+    border-radius: 50%;
+    width: 3px;
+    height: 3px;
+    background-color: white;
+    transform: translate(-50%, -50%);
+    animation: ball 1.2s infinite linear;
+  }
+  body .messages-content .message.typing span {
+    width: 3px;
+    height: 3px;
+    transform: translate(-50%, -50%);
+  }
+  body .messages-content .message.typing span::before, body .messages-content .message.typing span::after {
+    content: "";
+    border-radius: 50%;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    background-color: white;
+    animation: ball 1.2s infinite linear;
+  }
+  body .messages-content .message.typing span::before {
+    left: 8px;
+    animation-delay: 0.3s;
+  }
+  body .messages-content .message.typing span::after {
+    right: 8px;
+    animation-delay: -0.3s;
+  }
+  body .action-box {
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 40px;
+  }
+  body .action-box-input, body .action-box-submit {
+    box-sizing: border-box;
+    border: 0;
+    float: left;
+  }
+  body .action-box-input {
+    width: calc(100% - 60px);
+    height: 20px;
+    background-color: transparent;
+    resize: none;
+    color: white;
+    margin: 10px 0;
+    padding: 0 10px;
+    line-height: 20px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    overflow: hidden;
+  }
+  body .action-box-input::-webkit-input-placeholder {
+    line-height: 20px;
+    font-size: 13px;
+  }
+  body .action-box-submit {
+    width: 60px;
+    height: 40px;
+    background-color: rgba(189, 195, 199, 0.2);
+    color: white;
+    cursor: pointer;
+  }
+  #printAnswer{
+    color:white;
+    padding: 3px;
+  }
+
+  .loader {
+  display: none;
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #808080;
+  margin:45%;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+  @-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+</style>
+<body>
+  <header id="header" class="header fixed-top">
+    <div
+      class="container-fluid container-xl d-flex align-items-center justify-content-between"
+    >
+      <a href="/" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="" />
+        <span>India's Bitcoin Man</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <!-- <li><a class="nav-link scrollto active" href="#hero">Home</a></li> -->
+          <!-- <li><a class="nav-link scrollto" href="#about">About</a></li>
+        <li><a class="nav-link scrollto" href="#services">Services</a></li>
+        <li><a class="nav-link scrollto" href="#team">Team</a></li> -->
+          <!-- <li><a href="blog.html">Why ?</a></li> -->
+          <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="#">Drop Down 1</a></li>
+            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+              <ul>
+                <li><a href="#">Deep Drop Down 1</a></li>
+                <li><a href="#">Deep Drop Down 2</a></li>
+                <li><a href="#">Deep Drop Down 3</a></li>
+                <li><a href="#">Deep Drop Down 4</a></li>
+                <li><a href="#">Deep Drop Down 5</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Drop Down 2</a></li>
+            <li><a href="#">Drop Down 3</a></li>
+            <li><a href="#">Drop Down 4</a></li>
+          </ul>
+        </li> -->
+          <!-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
+          <li>
+            <a class="getstarted scrollto" href="/chat">Start Professional Chat</a>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+      <!-- .navbar -->
+    </div>
+  </header>
+<div class="chat">
+    <div class="chat-title">
+      <h2>India's Bitcoin Man</h2>
+      <figure class="avatar"><img src="assets/img/indiaBitcoinMan.jpeg"/></figure>
+    </div>
+    <div class="messages">
+      <div class="messages-content">
+        <div class="loader" id="loaderId"></div>
+
+        <div id="printAnswer">
+
+        </div>
+      </div>
+    </div>
+    <form class="action-box" onsubmit="handleSubmit(event)">
+      <input class="action-box-input" id="ques" name="ques" type="text" placeholder="Type message..."/>
+      <button class="action-box-submit" type="submit" ><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+      </svg></button>
+    </form>
+  </div>
+    <script>
+
+      let loaderController = document.getElementById('loaderId');
+
+        async function handleSubmit(event){
+          loaderController.style.display='flex';
+            event.preventDefault();
+            const res = await fetch('/messages' , {
+                method:'POST',
+                headers: {
+        "Content-Type": "application/json",
+      },
+      body:JSON.stringify({
+        "Body" : event.target['ques'].value,
+    "To" : "919810187088",
+    "From" : "13149364729"
+      })
+            })
+            .then( () => {  loaderController.style.display='none'; console.log("yes"); })
+            const resData = await res.json();
+            
+            
+            document.getElementById('ques').value = "";
+            document.getElementById('printAnswer').innerHTML=resData;
+
+        }
+    </script>
+</body>
+</html>

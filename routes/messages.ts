@@ -4,27 +4,25 @@ import express from "express";
 import { MessagingRequest } from "../types/request";
 import { getReply } from "../src/gpt3";
 
+// import '../public/assets/css/loader.css';
+
 const { MessagingResponse } = twiml;
 const router = Router();
 router.use(urlencoded({ extended: false }));
 router.use(express.json());
+const questionModel = require('../models/questionModel')
 
 router.post("/", async (req: MessagingRequest, res: Response<string>) => {
-  console.log(req.body)
   const userMessage = req.body.Body;
   const response = new MessagingResponse();
   try {
     const reply = await getReply(userMessage, req.body.From);
-    // console.log("msg", req.body.From, req.body.To, req.body.Body)
+    questionModel.create({question:userMessage})
     response.message(reply.text);
     res.json(reply.text);
   } catch (error) {
-    console.error(error);
     response.message(`Failed to reply for ${userMessage}.`);
   }
-  // res.contentType("application/xml");
-  
-  // res.send(reply);
 });
 
 export default router;

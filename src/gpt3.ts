@@ -1,10 +1,3 @@
-/*
-  This is a sample GPT-3 bot that uses the Promptable API to get a prompt and config
-  and then uses the OpenAI API to generate a response.
-
-  If you don't want to use Promptable, you can just hard-code your prompt and config
-  somewhere in this file and replace the call to the Promptable API with a local call.
-*/  
 
 const { Configuration, OpenAIApi } = require("openai");
 import GPT3Tokenizer from "gpt3-tokenizer";
@@ -83,8 +76,8 @@ function getOrCreateChatHistory(phone: string, message: string) {
       chatHistory = store.create(phone, DEFAULT_AGENT_NAME, DEFAULT_PROMPT_ID);
     }
   } else {
-    console.log("RESETTING CHAT HISTORY!");
-    console.log(chatHistory);
+    // console.log("RESETTING CHAT HISTORY!");
+    // console.log(chatHistory);
   }
 }
 
@@ -95,15 +88,15 @@ function formatChatHistoryTurns(turns: Turn[]) {
 
 
 function formatPromptText(chatHistory: ChatHistory, promptTemplate: string) {
-  console.log("PromptTemplate", promptTemplate);
+  // console.log("PromptTemplate", promptTemplate);
   const numTokens = countBPETokens(promptTemplate);
   let turnsText = formatChatHistoryTurns(chatHistory.turns);
-  console.log("turnsText", turnsText);
-  console.log("Pre Truncation", turnsText);
+  // console.log("turnsText", turnsText);
+  // console.log("Pre Truncation", turnsText);
   turnsText = leftTruncateTranscript(turnsText, 4000 - numTokens);
-  console.log("Post Truncation", turnsText)
+  // console.log("Post Truncation", turnsText)
   const prompt = injectValuesIntoPrompt(promptTemplate, { input: turnsText});
-  console.log("Prompt", prompt);
+  // console.log("Prompt", prompt);
   return prompt;
 }
 
@@ -112,21 +105,21 @@ export const getReply = async (
   message: string,
   phoneNumber: string
 ): Promise<OpenAIResponse> => {
-  console.log("Number", phoneNumber, "Message", message.trim());
+  // console.log("Number", phoneNumber, "Message", message.trim());
   // strip whitespace!
   message = message.trim();
   getOrCreateChatHistory(phoneNumber, message);
   store.add(phoneNumber, message, "User");
   const chatHistory = store.get(phoneNumber);
-  console.log("Chat History", chatHistory);
+  // console.log("Chat History", chatHistory);
 
   // Get the prompt and config from the Promptable API
   // (Optionally) replace this call with a local hard-coded prompt and config
   const { data } = await axios.get(`https://promptable.ai/api/prompt/${chatHistory.promptId}/deployment/active`);
-  console.log(data);
+  // console.log(data);
 
   const prompt = formatPromptText(chatHistory, data.text);
-  console.log("PROMPT", prompt);
+  // console.log("PROMPT", prompt);
   const params = {
     prompt,
     model: data.config.model,
@@ -134,12 +127,12 @@ export const getReply = async (
     temperature: data.config.temperature,
     stop: data.config.stop,
   };
-  console.log(params);
+  // console.log(params);
   const response = await openai.createCompletion(params);
-  console.log(response.data);
+  // console.log(response.data);
   const agentText = response.data.choices[0].text.trim();
   store.add(phoneNumber, agentText, chatHistory.agentName);
-  console.log(`${chatHistory.agentName}: ${agentText}`);
+  // console.log(`${chatHistory.agentName}: ${agentText}`);
   return {
     text: agentText
   } as OpenAIResponse;
