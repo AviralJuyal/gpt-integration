@@ -347,6 +347,7 @@
       let loaderController = document.getElementById('loaderId');
 
         async function handleSubmit(event){
+          document.getElementById('printAnswer').innerHTML = '';
           loaderController.style.display='flex';
             event.preventDefault();
             const res = await fetch('/messages' , {
@@ -360,10 +361,9 @@
     "From" : "13149364729"
       })
             })
-            .then( () => {  loaderController.style.display='none'; console.log("yes"); })
+           loaderController.style.display='none';
             const resData = await res.json();
-            
-            
+            console.log(resData);
             document.getElementById('ques').value = "";
             document.getElementById('printAnswer').innerHTML=resData;
 
