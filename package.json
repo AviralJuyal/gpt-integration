@@ -1,0 +1,27 @@
+{
+  "name": "satoshi-yug",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RupinVijan/satoshi-yug.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RupinVijan/satoshi-yug/issues"
+  },
+  "homepage": "https://github.com/RupinVijan/satoshi-yug#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.4",
+    "path": "^0.12.7"
+  }
+}
